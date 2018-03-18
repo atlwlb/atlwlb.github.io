@@ -1,0 +1,123 @@
+<!--Startpage by Tayumpee-->
+<!--facebook.com/yourwaterlord-->
+
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>お帰りなさい, ANON</title>
+		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				  //URL of the RSS feed
+				  $(".marquee").toggleClass("microsoft");
+				  var feed_url = 'http://www.gamespot.com/feeds/news/';
+				$.ajax({
+				  url      : 'http://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.gamespot.com%2Ffeeds%2Fnews%2F&api_key=rtqxfkmsnstwzpc0vm1l3s8azh7nun564ptrrnhz' + encodeURIComponent(feed_url),
+				  dataType : 'json',
+				  success  : function (data) {
+					if (data.responseData.feed && data.responseData.feed.entries) {
+					  $.each(data.responseData.feed.entries, function (i, e) {
+						$("#news1").append('<a target="_blank" class="mlink" href="' + e.link + '">' + e.title + '.</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+						//document.getElementById("news1").setAttribute("data-marquee", '<a target="_blank" class="mlink" href="' + e.link + '">' + e.title + '.</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+						//console.log('<span class="marquee"><a target="_blank" class="mlink" href="' + e.link + '">' + e.title + '.</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+					  });
+					}
+				  }
+				});
+			});
+			
+			function show( show1 ) {
+			  document.getElementById(show1).style.display="block";
+			}
+			function hide( hide1 ) {
+			  document.getElementById(hide1).style.display="none";
+			}
+			function tog( tog1 ) {
+			  document.getElementById(tog1).style.backgroundColor="#777777";
+			}
+			function toh( toh1 ) {
+			  document.getElementById(toh1).style.backgroundColor="#ffffff";
+			}
+		</script>
+	</head>
+	<body>
+		<div class="maincontainer">
+			<div class="bottomcontainer">
+				<div class="button" id="btn1" onclick = "show('main1');hide('main2');tog('btn1');toh('btn2');"></div>
+				<div class="button" id="btn2" onclick = "show('main2');hide('main1');tog('btn2');toh('btn1');"></div>
+
+				<div class="marqueebar" id="marqueebar">
+					<marquee id="news1" class="marquee2"></marquee>
+				</div>
+				<div class="searchbar">
+					<form name="form1" action="http://google.com/search" target="_blank" method="get" >
+						<input type="text" autocomplete="off" placeholder="google search..." name="q" class="searchinput"></input>
+					</form>
+				</div>
+			</div>
+			<div class="time" id="time">
+				<script>
+					//document.getElementById("main").innerHTML = Date();
+					function updateClock() {
+						var days = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+						var m = new Date();
+						var dateString =
+						  (days[ m.getDay() ]) + " " +
+						  ("0" + (m.getMonth()+1)).slice(-2) +"/"+
+						  ("0" + m.getDate()).slice(-2) + "/" +
+						  m.getFullYear() +" "+
+						  ("0" + m.getHours()).slice(-2) + ":" +
+						  ("0" + m.getMinutes()).slice(-2) + ":" +
+						  ("0" + m.getSeconds()).slice(-2);
+						
+						// set the content of the element with the ID time to the formatted string
+						document.getElementById('time').innerHTML = dateString;
+
+						// call this function again in 1000ms
+						setTimeout(updateClock, 1000);
+					}
+					updateClock(); // initial call
+				</script>
+			</div>
+			<div class="main" id="main1">
+				<div class="sidebar" style="background-image: url(img/m1.gif);"></div>
+				<div class="welcome">お帰りなさい</div>
+				<div class="bookmarkscontainer">
+					<ul>
+						<li><a href="http://4chan.org/w/" class="clink" target="_blank">/w/</a>
+						<li><a href="http://4chan.org/mu/" class="clink" target="_blank">/mu/</a>
+						<li><a href="http://4chan.org/c/" class="clink" target="_blank">/c/</a>
+						<li><a href="http://kanyetothe.com/forum/" class="clink" target="_blank">ktt</a>
+						<li><a href="http://reddit.com/r/streetwear/" class="clink" target="_blank">sw</a>
+					</ul>
+					<ul>
+						<li><a href="http://facebook.com" class="clink" target="_blank">facebook</a>
+						<li><a href="http://gmail.com" class="clink" target="_blank">gmail</a>
+						<li><a href="http://tumblr.com" class="clink" target="_blank">tumblr</a>
+						<li><a href="http://youtube.com" class="clink" target="_blank">youtube</a>
+						<li><a href="http://bandcamp.com" class="clink" target="_blank">bandcamp</a>
+					</ul>
+					<ul>
+						<li><a href="http://pixiv.net" class="clink" target="_blank">pixiv</a>
+						<li><a href="http://gelbooru.com" class="clink" target="_blank">gelbooru</a>
+						<li><a href="http://bakabt.me" class="clink" target="_blank">bakabt</a>
+						<li><a href="http://nyaa.si/" class="clink" target="_blank">nyaa</a>
+					</ul>
+					<ul>
+						<li><a href="http://hulu.com" class="clink" target="_blank">hulu</a>
+						<li><a href="http://netflix.com" class="clink" target="_blank">netflix</a>
+						<li><a href="http://grailed.com/" class="clink" target="_blank">grailed</a>
+						<li><a href="http://discogs.com/" class="clink" target="_blank">discogs</a>
+					</ul>
+				</div>
+			</div>
+			<div class="main" id="main2" style="display:none">
+				<div class="sidebar" style="background-image: url(img/m2.gif);"></div>
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/uiHzLbweqAY" frameborder="0" allowfullscreen></iframe>			
+			</div>
+		</div>
+	</body>
+</html>
